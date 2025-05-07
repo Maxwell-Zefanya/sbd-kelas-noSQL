@@ -1,0 +1,29 @@
+{
+  "name": "tugas-nosql-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxwell-Zefanya/sbd-kelas-noSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Maxwell-Zefanya/sbd-kelas-noSQL/issues"
+  },
+  "homepage": "https://github.com/Maxwell-Zefanya/sbd-kelas-noSQL#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.14.1"
+  }
+}
