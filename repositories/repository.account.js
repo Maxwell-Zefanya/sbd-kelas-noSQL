@@ -16,6 +16,35 @@ async function addAccount(req, res) {
     }
 }
 
+async function loginAccount(req, res) {
+    try {
+        const { username, password } = req.body;
+        
+        const user = await User.findOne({ username: username });
+        if (!user) throw new Error("User not found");
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) throw new Error("Invalid Password");
+
+        res.status(200).json({ success: true, message: "Found user", data: user });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
+async function getAllAccounts(req, res) {
+    try {
+        const accounts = await Account.find().sort({ createdAt: -1 });
+        res.status(200).json({ success: true, message: "Found all accounts", data: accounts });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
 module.exports = {
-    addAccount
+    addAccount,
+    loginAccount,
+    getAllAccounts
 }
