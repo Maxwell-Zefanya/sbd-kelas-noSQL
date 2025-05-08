@@ -4,9 +4,9 @@ const Game = require("../schema/GameSchema");
 
 async function addAccount(req, res) {
     try {
-        const { username, password, email, games, achievements } = req.body;
+        const { username, password, email} = req.body;
 
-        const account = new Account({ username: username, password: password, email:email, games:games, achievements:achievements });
+        const account = new Account({ username: username, password: password, email:email});
         await account.save();
 
         res.status(200).json({ success: true, message: "Successfully Added Account", data: account });
@@ -43,8 +43,40 @@ async function getAllAccounts(req, res) {
     }
 }
 
+
+async function addAchievement(req, res) {
+    try {
+        const { user_id, achievement_id } = req.body;
+        const accounts = await Account.updateOne(
+            { _id: user_id },
+            { $push: { achievement: achievement_id } }
+        );
+        res.status(200).json({ success: true, message: "Added game to account", data: accounts });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
+
+async function addGame(req, res) {
+    try {
+        const { user_id, game_id } = req.body;
+        const accounts = await Account.updateOne(
+            { _id: user_id },
+            { $push: { game: game_id } }
+        );
+        res.status(200).json({ success: true, message: "Added game to account", data: accounts });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
 module.exports = {
     addAccount,
     loginAccount,
-    getAllAccounts
+    getAllAccounts,
+    addAchievement,
+    addGame
 }
