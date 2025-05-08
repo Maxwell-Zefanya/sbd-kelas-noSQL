@@ -16,6 +16,16 @@ async function addUser(req, res) {
     }
 }
 
+async function getAllUsers(req, res) {
+    try {
+        const users = await User.find();
+        res.status(200).json({ success: true, message: "Found all users", data: users });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
 module.exports = {
     addUser
 }
