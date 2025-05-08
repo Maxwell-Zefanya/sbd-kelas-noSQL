@@ -11,4 +11,10 @@ router.post("/loginAccount", accountRepo.loginAccount);
 // get all user
 router.get("/getAllAccounts", accountRepo.getAllAccounts);
 
+// add achievement to user
+router.get("/addAchievement", accountRepo.addAchievement);
+
+// add game to user
+router.get("/addGame", accountRepo.addGame);
+
 module.exports = router;
