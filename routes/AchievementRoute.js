@@ -2,7 +2,7 @@ const express = require("express");
 const achievementRepo = require("../repositories/repository.achievement");
 const router = express.Router();
 
-// add user
-router.post("/addachievement", achievementRepo.addachievement);
+// add achievement
+router.post("/addAchievement", achievementRepo.addAchievement);
 
 module.exports = router;

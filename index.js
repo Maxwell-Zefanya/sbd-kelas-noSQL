@@ -3,6 +3,7 @@ require("dotenv").config();
 const userRoutes = require('./routes/UserRoute');
 const accountRoutes = require('./routes/AccountRoute');
 const gameRoutes = require("./routes/Game.Route");
+const achievementRoutes = require('./routes/AchievementRoute');
 
 const express = require('express');
 const cors = require('cors');
@@ -39,6 +40,9 @@ app.use("/account", accountRoutes);
 
 //redirect /game to gameRoutes
 app.use("/game", gameRoutes);
+
+//redirect /achievement to gameRoutes
+app.use("/achievement", achievementRoutes);
 
 app.listen(port, () => {
     console.log(`🚀 Server is running on PORT ${port}`);
