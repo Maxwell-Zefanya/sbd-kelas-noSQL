@@ -1,5 +1,6 @@
 const User = require("../schema/UserSchema");
 const Account = require("../schema/AccountSchema");
+const Game = require("../schema/GameSchema");
 
 async function addUser(req, res) {
     try {
