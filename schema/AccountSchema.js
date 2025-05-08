@@ -5,7 +5,7 @@ const accountSchema = new mongoose.Schema({
     password: { type: String, required: true },
     email:    { type: String, required: true },
     games:    { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
-    achievements: [String]
+    achievements: { type: mongoose.Schema.Types.ObjectId, ref: 'Achievement'},
 }, { timestamps: true }
 );
 
