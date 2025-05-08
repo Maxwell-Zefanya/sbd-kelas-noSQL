@@ -36,6 +36,8 @@ app.use("/user", userRoutes);
 // redirect /score to scoreRoutes
 app.use("/account", accountRoutes);
 
+//redirect /game to gameRoutes
+app.use("/game", require("./routes/GameRoute"));
 
 app.listen(port, () => {
     console.log(`🚀 Server is running on PORT ${port}`);
