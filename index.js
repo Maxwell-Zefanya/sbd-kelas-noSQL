@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const userRoutes = require('./routes/UserRoute');
 const accountRoutes = require('./routes/AccountRoute');
+const gameRoutes = require("./routes/Game.Route");
 
 const express = require('express');
 const cors = require('cors');
@@ -37,7 +38,7 @@ app.use("/user", userRoutes);
 app.use("/account", accountRoutes);
 
 //redirect /game to gameRoutes
-app.use("/game", require("./routes/GameRoute"));
+app.use("/game", gameRoutes);
 
 app.listen(port, () => {
     console.log(`🚀 Server is running on PORT ${port}`);
