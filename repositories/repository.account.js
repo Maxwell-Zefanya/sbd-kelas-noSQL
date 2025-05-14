@@ -2,6 +2,8 @@ const User = require("../schema/UserSchema");
 const Account = require("../schema/AccountSchema");
 const Game = require("../schema/GameSchema");
 
+import {checkAchievement} from "../repositories/repository.achievement";
+
 async function addAccount(req, res) {
     try {
         const { username, password, email} = req.body;
@@ -66,6 +68,7 @@ async function addGame(req, res) {
             { _id: user_id },
             { $push: { game: game_id } }
         );
+        checkAchievement(user_id, "condition_playtime");
         res.status(200).json({ success: true, message: "Added game to account", data: accounts });
     } catch (err) {
         res.status(400).json({ success: false, message: err.message });
