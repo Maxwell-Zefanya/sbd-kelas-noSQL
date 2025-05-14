@@ -32,17 +32,20 @@ app.get('/status', (req, res) => {
     res.status(200).send({ status: "Server is running" });
 })
 
-// redirect /user to userRoutes
+// redirect /user to userRoute
 app.use("/user", userRoutes);
 
-// redirect /score to scoreRoutes
+// redirect /score to scoreRoute
 app.use("/account", accountRoutes);
 
 //redirect /game to gameRoutes
 app.use("/game", gameRoutes);
 
-//redirect /achievement to gameRoutes
+//redirect /achievement to achievementRoute
 app.use("/achievement", achievementRoutes);
+
+//redirect /review to reviewRoute
+app.use("/review", achievementRoutes);
 
 app.listen(port, () => {
     console.log(`🚀 Server is running on PORT ${port}`);
