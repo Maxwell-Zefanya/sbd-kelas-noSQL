@@ -1,6 +1,7 @@
 const User = require("../schema/UserSchema");
 const Account = require("../schema/AccountSchema");
 const Game = require("../schema/GameSchema");
+const bcrypt = require('bcrypt');
 
 async function addAccount(req, res) {
     try {
@@ -35,7 +36,7 @@ async function loginAccount(req, res) {
 
 async function getAllAccounts(req, res) {
     try {
-        const accounts = await Account.find().sort({ createdAt: -1 });
+        const accounts = await Account.find().sort({ createdAt: -1 }).populate('games').populate('achievements');
         res.status(200).json({ success: true, message: "Found all accounts", data: accounts });
     } catch (err) {
         res.status(400).json({ success: false, message: err.message });
@@ -49,7 +50,7 @@ async function addAchievement(req, res) {
         const { user_id, achievement_id } = req.body;
         const accounts = await Account.updateOne(
             { _id: user_id },
-            { $push: { achievement: achievement_id } }
+            { $push: { achievements: achievement_id } }
         );
         res.status(200).json({ success: true, message: "Added game to account", data: accounts });
     } catch (err) {
@@ -64,7 +65,7 @@ async function addGame(req, res) {
         const { user_id, game_id } = req.body;
         const accounts = await Account.updateOne(
             { _id: user_id },
-            { $push: { game: game_id } }
+            { $push: { games: game_id } }
         );
         res.status(200).json({ success: true, message: "Added game to account", data: accounts });
     } catch (err) {

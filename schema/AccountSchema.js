@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const accountSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     email:    { type: String, required: true },
-    games:    { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
-    achievements: { type: mongoose.Schema.Types.ObjectId, ref: 'Achievement'},
+    games:    [{ type: mongoose.Schema.Types.ObjectId, ref: 'Game', default: [] }],
+    achievements: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Achievement', default: []}],
 }, { timestamps: true }
 );
 
