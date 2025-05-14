@@ -17,6 +17,16 @@ async function addAchievement(req, res) {
     }
 }
 
+async function getAllAchievement(req, res) {
+    try {
+        const achievement = await Achievement.find();
+        res.status(200).json({ success: true, message: "Found all achievements", data: achievement });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
 
 // Internal logic (no routes). Digunakan oleh file repository lainnya.
 // Automatically updates achievements
@@ -48,7 +58,7 @@ async function checkAchievement(id, cond) {
         })
         if(achievement) {
             let cond_met;
-            switch (achievement.condition.length) {
+            switch (achievement.condition) {
                 case "game_count":
                     check(account.games)
                     break;
@@ -70,5 +80,6 @@ async function checkAchievement(id, cond) {
 
 module.exports = {
     addAchievement,
-    checkAchievement
+    checkAchievement,
+    getAllAchievement
 }
