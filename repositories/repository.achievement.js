@@ -36,44 +36,32 @@ async function getAllAchievement(req, res) {
     cond  ==> condition to be checked. condition is passed as a string with the same name as it's conditional value. e.g. cond = "playtime"
 */
 async function checkAchievement(id, cond) {
-    function check(accval, mode, achval) {
-        switch(mode) {
-            case '>':
-                break;
-            case '<':
-                break;
-            case '=':
-                break;
-            case '!':
-                break;
-            default:
-                break;
-        }
-    }
-
     try {
         const account = await Account.findById(id);
         const achievement = await Achievement.findOne({
             condition: cond
         })
-        if(achievement) {
+        if(achievement && account) {
             let cond_met;
             switch (achievement.condition) {
-                case "game_count":
-                    check(account.games)
+                case "first_bought_game":
+                    cond_met = (account.games.length === 1) ? true : false;
                     break;
 
                 default:
                     break;
             }
             if(cond_met === true) {
-
+                await Account.updateOne(
+                    { _id: account._id },
+                    { $push: { achievement: achievement._id } }
+                );
             }
         } else {
-            return {message:"Achievement not found"}
+            return {message:"Account or achievement not found"}
         }
     } catch (err) {
-        return null
+        return {message:err}
     }
 }
 

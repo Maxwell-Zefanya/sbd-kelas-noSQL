@@ -4,6 +4,7 @@ const Game = require("../schema/GameSchema");
 const bcrypt = require('bcrypt');
 
 // import {checkAchievement} from "../repositories/repository.achievement";
+const Achievement = require("../repositories/repository.achievement");
 
 async function addAccount(req, res) {
     try {
@@ -69,7 +70,7 @@ async function addGame(req, res) {
             { _id: user_id },
             { $push: { games: game_id } }
         );
-        // checkAchievement(user_id, "condition_playtime");
+        checkAchievement(user_id, "condition_playtime");
         res.status(200).json({ success: true, message: "Added game to account", data: accounts });
     } catch (err) {
         res.status(400).json({ success: false, message: err.message });
