@@ -28,5 +28,6 @@ async function getAllUsers(req, res) {
 }
 
 module.exports = {
-    addUser
+    addUser,
+    getAllUsers
 }

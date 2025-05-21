@@ -1,0 +1,56 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment and secrets
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build and output directories
+dist/
+build/
+out/
+tmp/
+temp/
+
+# Test and debug artifacts
+test/
+tests/
+debug/
+*.log
+
+# Documentation and project files
+docs/
+*.md
+README*
+
+# Docker and compose files
+Dockerfile*
+docker-compose*
+
+# Temporary files
+*.tmp
+.local/
+local/
+
+# Miscellaneous
+*.bak
+*.orig
+*~
