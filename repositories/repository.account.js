@@ -22,15 +22,16 @@ async function addAccount(req, res) {
 
 async function loginAccount(req, res) {
     try {
-        const { username, password } = req.body;
+        const username = req.body.username;
+        const password = req.body.password;
         
-        const user = await User.findOne({ username: username });
-        if (!user) throw new Error("User not found");
+        const account = await Account.findOne({ username: username });
+        if (!account) throw new Error("User not found");
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, account.password);
         if (!isMatch) throw new Error("Invalid Password");
 
-        res.status(200).json({ success: true, message: "Found user", data: user });
+        res.status(200).json({ success: true, message: "Found account", data: account });
     } catch (err) {
         res.status(400).json({ success: false, message: err.message });
         console.log(`Error Message: ${err.message}`);
