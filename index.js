@@ -11,7 +11,6 @@ const db = require('./config/db');
 
 const port = process.env.PORT;
 const app = express();
-console.log(process.env);
 
 // connect to database
 db.connectDB();
