@@ -11,6 +11,9 @@ router.post("/loginAccount", accountRepo.loginAccount);
 // get all user
 router.get("/getAllAccounts", accountRepo.getAllAccounts);
 
+// get all user
+router.get("/getAllAccounts", accountRepo.getById);
+
 // add achievement to user
 router.put("/addAchievement", accountRepo.addAchievement);
 

@@ -48,6 +48,17 @@ async function getAllAccounts(req, res) {
     }
 }
 
+async function getById(req, res) {
+    try {
+        const { user_id } = req.body;
+        const accounts = await Account.findById(user_id).populate('games').populate('achievements');
+        res.status(200).json({ success: true, message: "Found all accounts", data: accounts });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err.message });
+        console.log(`Error Message: ${err.message}`);
+    }
+}
+
 
 async function addAchievement(req, res) {
     try {
@@ -83,6 +94,7 @@ module.exports = {
     addAccount,
     loginAccount,
     getAllAccounts,
+    getById,
     addAchievement,
     addGame
 }
