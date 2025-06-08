@@ -11,12 +11,15 @@ https://github.com/RubenKristanto/Frontend-SBD-kelas-no-SQL
 Proyek yang telah dibuat ini bertujuan untuk membuat sebuah aplikasi web yang bertemakan game marketplace. Pengguna bisa membuat akun untuk melihat atau membeli berbagai game. Game tersebut akan disimpan ke akun sang pengguna dan bisa dimainkan sesuai keinginan. Selain itu, aplikasi website ini juga memiliki fitur achievement yang bisa diraih oleh pengguna saat ia melakukan berbagai aktivitas baik di Game ataupun di store ini.  
 
 Aplikasi ini memiliki 3 bagian, yaitu bagian front-end, bagian back-end, dan bagian database. Bila digambarkan dalam diagram, relasi antara ketiga bagian adalah sebagai berikut:  
+
 ![Relasi Bagian Aplikasi](https://imgur.com/x1m181Q.png)  
 
 Secara garis besar, bagian front-end akan berkomunikasi dengan back-end untuk mendapatkan data sesuai dengan format yang diinginkan. Data tersebut sendiri bisa ada pada back-end karena bagian back-end juga terhubung dengan database. Sesuai dengan gambar, teknologi yang digunakan untuk ketiga bagian adalah sebagai berikut:  
 - Database: MongoDB Atlas, a NoSQL document database
 - Back-end: Node.js
 - Front-end: React with Vite
+
+Jalannya bagian database sudah diurus sendiri oleh MongoDB, dimana produknya sudah bisa langsung digunakan untuk keperluan komunikasi data. Namun, untuk menjalankan aplikasi back-end dan front-end, perlu dilakukan beberapa tahap yang relatif lebih sulit yang melibatkan lebih banyak tahap. Oleh karena itu, kelompok kami sampai kepada solusi yaitu dengan kontainerisasi kedua aplikasi. Teknologi kontainerisasi yang kami gunakan adalah Docker, dimana melalui Docker bagian back-end dan front-end bisa dijalankan dengan lebih mudah dan efisien.  
 
 ## Cara Menjalankan
 ### Part 1: Setup
