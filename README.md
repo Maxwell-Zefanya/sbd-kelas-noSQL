@@ -12,7 +12,7 @@ Proyek yang telah dibuat ini bertujuan untuk membuat sebuah aplikasi web yang be
 
 Aplikasi ini memiliki 3 bagian, yaitu bagian front-end, bagian back-end, dan bagian database. Bila digambarkan dalam diagram, relasi antara ketiga bagian adalah sebagai berikut:  
 
-![Relasi Bagian Aplikasi](https://imgur.com/x1m181Q.png)  
+![Relasi Aplikasi](https://imgur.com/LFJ2b4J.png)  
 
 Secara garis besar, bagian front-end akan berkomunikasi dengan back-end untuk mendapatkan data sesuai dengan format yang diinginkan. Data tersebut sendiri bisa ada pada back-end karena bagian back-end juga terhubung dengan database. Sesuai dengan gambar, teknologi yang digunakan untuk ketiga bagian adalah sebagai berikut:  
 - Database: MongoDB Atlas, a NoSQL document database
