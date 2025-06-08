@@ -12,7 +12,7 @@ router.post("/loginAccount", accountRepo.loginAccount);
 router.get("/getAllAccounts", accountRepo.getAllAccounts);
 
 // get all user
-router.get("/byId", accountRepo.getById);
+router.post("/byId", accountRepo.getById);
 
 // add achievement to user
 router.put("/addAchievement", accountRepo.addAchievement);
